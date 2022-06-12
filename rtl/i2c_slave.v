@@ -1,3 +1,4 @@
+`default_nettype none   //do not allow undeclared wires
 /*
 
 Copyright (c) 2017 Alex Forencich
@@ -99,7 +100,7 @@ This module translates I2C read and write operations into AXI stream transfers.
 Bytes written over I2C will be delayed by one byte time so that the last byte
 in a write operation can be accurately marked.  When reading, the module will
 stretch SCL by holding it low until a data byte is presented at the AXI stream
-input.  
+input.
 
 Control:
 
@@ -393,7 +394,7 @@ always @* begin
                     end else begin
                         scl_o_next = 1'b1;
                         {sda_o_next, data_next} = {data_reg, 1'b0};
-                        
+
                         if (bit_count_reg > 0) begin
                             bit_count_next = bit_count_reg-1;
                             state_next = STATE_READ_1;
