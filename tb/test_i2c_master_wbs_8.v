@@ -1,3 +1,4 @@
+`default_nettype none   //do not allow undeclared wires
 /*
 
 Copyright (c) 2016-2017 Alex Forencich

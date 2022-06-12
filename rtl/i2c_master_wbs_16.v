@@ -1,3 +1,4 @@
+`default_nettype none   //do not allow undeclared wires
 /*
 
 Copyright (c) 2017 Alex Forencich
@@ -134,7 +135,7 @@ cmd_stop: set high to issue I2C stop, write to push on command FIFO
 Setting more than one command bit is allowed.  Start or repeated start
 will be issued first, followed by read or write, followed by stop.  Note
 that setting read and write at the same time is not allowed, this will
-result in the command being ignored.  
+result in the command being ignored.
 
 Data register:
 
@@ -467,7 +468,7 @@ always @* begin
 
     cmd_fifo_overflow_next = cmd_fifo_overflow_reg;
     write_fifo_overflow_next = write_fifo_overflow_reg;
-    
+
     if (wbs_cyc_i & wbs_stb_i) begin
         // bus cycle
         if (wbs_we_i) begin
@@ -645,12 +646,12 @@ i2c_master_inst (
     .s_axis_data_tvalid(data_in_valid_int),
     .s_axis_data_tready(data_in_ready_int),
     .s_axis_data_tlast(data_in_last_int),
-    
+
     .m_axis_data_tdata(data_out_int),
     .m_axis_data_tvalid(data_out_valid_int),
     .m_axis_data_tready(data_out_ready_int),
     .m_axis_data_tlast(data_out_last_int),
-    
+
     // I2C interface
     .scl_i(i2c_scl_i),
     .scl_o(i2c_scl_o),
