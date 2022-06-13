@@ -74,6 +74,7 @@ module axis_fifo #
     // Requires FRAME_FIFO set
     parameter DROP_WHEN_FULL = 0,
     
+    parameter ADDR_WIDTH = (KEEP_ENABLE && KEEP_WIDTH > 1) ? $clog2(DEPTH/KEEP_WIDTH) : $clog2(DEPTH)
 )
 (
     input  wire                   clk,
@@ -113,7 +114,6 @@ module axis_fifo #
     output wire                   status_empty
 );
 
-//parameter ADDR_WIDTH = (KEEP_ENABLE && KEEP_WIDTH > 1) ? $clog2(DEPTH/KEEP_WIDTH) : $clog2(DEPTH);
 
 // check configuration
 initial begin
