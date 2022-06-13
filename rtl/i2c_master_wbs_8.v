@@ -309,7 +309,7 @@ generate
 
 if (CMD_FIFO) begin
     axis_fifo #(
-        .ADDR_WIDTH(CMD_FIFO_ADDR_WIDTH),
+       // .ADDR_WIDTH(CMD_FIFO_ADDR_WIDTH),
         .DATA_WIDTH(7+5),
         .KEEP_ENABLE(0),
         .LAST_ENABLE(0),
@@ -353,10 +353,10 @@ end
 
 if (WRITE_FIFO) begin
     axis_fifo #(
-        .ADDR_WIDTH(WRITE_FIFO_ADDR_WIDTH),
+        //.ADDR_WIDTH(WRITE_FIFO_ADDR_WIDTH),
         .DATA_WIDTH(8),
         .KEEP_ENABLE(0),
-        .LAST_ENABLE(0),
+        .LAST_ENABLE(1),
         .ID_ENABLE(0),
         .DEST_ENABLE(0),
         .USER_ENABLE(0),
@@ -393,7 +393,7 @@ end
 
 if (READ_FIFO) begin
     axis_fifo #(
-        .ADDR_WIDTH(READ_FIFO_ADDR_WIDTH),
+        //.ADDR_WIDTH(READ_FIFO_ADDR_WIDTH),
         .DATA_WIDTH(8),
         .KEEP_ENABLE(0),
         .LAST_ENABLE(1),
